@@ -63,6 +63,7 @@
     "node-html-parser": "^7.1.0",
     "nodemailer": "^7.0.10",
     "openai": "^4.77.3",
+    "pdf-lib": "^1.17.1",
     "plaid": "^41.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
