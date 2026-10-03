@@ -5,6 +5,7 @@
  */
 
 import Link from "next/link";
+import { authFetch } from "@/lib/firm/client-fetch";
 import { useEffect, useState } from "react";
 
 interface ClientRow {
@@ -27,7 +28,7 @@ export default function FirmClientsPage() {
 
   async function load() {
     setLoading(true);
-    const res = await fetch("/api/firm/clients");
+    const res = await authFetch("/api/firm/clients");
     const body = await res.json().catch(() => ({}));
     if (res.ok) setClients(body.clients ?? []);
     else setError(body.error || body.message || "Could not load clients.");
@@ -42,7 +43,7 @@ export default function FirmClientsPage() {
     e.preventDefault();
     setSaving(true);
     setError(null);
-    const res = await fetch("/api/firm/clients", {
+    const res = await authFetch("/api/firm/clients", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
