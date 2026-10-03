@@ -5,6 +5,7 @@ import Link from "next/link";
 import CreditScoreCard from "@/components/credit-bureau/CreditScoreCard";
 import CreditReportViewer from "@/components/credit-bureau/CreditReportViewer";
 import CreditReportImport from "@/components/credit-bureau/CreditReportImport";
+import ThreeBureauReportImport from "@/components/credit-bureau/ThreeBureauReportImport";
 import type { CreditReport } from "@/types/credit-bureau";
 
 export default function CreditReportsPage() {
@@ -99,11 +100,15 @@ export default function CreditReportsPage() {
               Credit Reports
             </h1>
             <p className="text-lg text-gray-600 dark:text-slate-300">
-              Import your credit reports from Experian, Equifax, or TransUnion
+              Import a 3-bureau report from IdentityIQ, MyScoreIQ or SmartCredit
               to get started.
             </p>
           </div>
 
+          <ThreeBureauReportImport onImportComplete={handleImportComplete} />
+          <div className="my-6 text-center text-sm text-gray-500 dark:text-slate-400">
+            or import a single bureau
+          </div>
           <CreditReportImport
             onImportComplete={handleImportComplete}
             onError={() => {
@@ -253,6 +258,10 @@ export default function CreditReportsPage() {
               </svg>
               Back to Reports
             </button>
+            <ThreeBureauReportImport onImportComplete={handleImportComplete} />
+            <div className="my-6 text-center text-sm text-gray-500 dark:text-slate-400">
+              or import a single bureau
+            </div>
             <CreditReportImport
               onImportComplete={handleImportComplete}
               onError={() => {

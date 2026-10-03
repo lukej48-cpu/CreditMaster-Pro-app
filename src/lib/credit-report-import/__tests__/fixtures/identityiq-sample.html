@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC test fixture modelled on the IdentityIQ 3-bureau report layout.
+  Fictional consumer — no real person's data. Seeded with known
+  cross-bureau discrepancies that the tests assert on.
+-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>IdentityIQ | 3 Bureau Credit Report</title>
+  <style>.rpt_content_table td { padding: 2px; }</style>
+  <script>window.__app = { ssn: "123-45-6789" };</script>
+</head>
+<body>
+<div id="reportTop">
+  <input type="hidden" name="ssnFull" value="123-45-6789">
+  <div class="rpt_fullReport_header">Personal Information</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr>
+      <th></th>
+      <th class="headerTUC">TransUnion</th>
+      <th class="headerEXP">Experian</th>
+      <th class="headerEQF">Equifax</th>
+    </tr>
+    <tr><td class="label">Credit Report Date:</td><td class="info">09/15/2026</td><td class="info">09/15/2026</td><td class="info">09/15/2026</td></tr>
+    <tr><td class="label">Name:</td><td class="info">JANE Q SAMPLE</td><td class="info">JANE Q SAMPLE</td><td class="info">JANE Q SAMPLE</td></tr>
+    <tr><td class="label">Also Known As:</td><td class="info">-</td><td class="info">JANE SAMPLES</td><td class="info">-</td></tr>
+    <tr><td class="label">Date of Birth:</td><td class="info">1988</td><td class="info">1988</td><td class="info">1987</td></tr>
+    <tr><td class="label">Current Address(es):</td>
+      <td class="info">100 MAIN ST APT 4<br>LOS ANGELES, CA 90028</td>
+      <td class="info">100 MAIN ST APT 4<br>LOS ANGELES, CA 90028</td>
+      <td class="info">100 MAIN ST APT 4<br>LOS ANGELES, CA 90028</td></tr>
+    <tr><td class="label">Previous Address(es):</td>
+      <td class="info"><div>55 ELM AVE</div><div>NEWARK, NJ 07102</div></td>
+      <td class="info">-</td>
+      <td class="info">-</td></tr>
+    <tr><td class="label">Employers:</td><td class="info">ACME LLC</td><td class="info">-</td><td class="info">ACME LLC</td></tr>
+  </table>
+
+  <div class="rpt_fullReport_header">Credit Score</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Credit Score:</td><td class="info">612</td><td class="info">598</td><td class="info">605</td></tr>
+    <tr><td class="label">Lender Rank:</td><td class="info">Fair</td><td class="info">Poor</td><td class="info">Fair</td></tr>
+    <tr><td class="label">Score Scale:</td><td class="info">300-850</td><td class="info">300-850</td><td class="info">300-850</td></tr>
+  </table>
+
+  <div class="rpt_fullReport_header">Summary</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Total Accounts:</td><td class="info">5</td><td class="info">3</td><td class="info">4</td></tr>
+  </table>
+
+  <div class="rpt_fullReport_header">Account History</div>
+
+  <!-- 1. Open card: limit lower on EQ, a 30-day late on EX only -->
+  <div class="sub_header">CAPITAL ONE</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Account #:</td><td class="info">517805******1234</td><td class="info">517805XXXXXX1234</td><td class="info">******1234</td></tr>
+    <tr><td class="label">Account Type:</td><td class="info">Revolving</td><td class="info">Revolving</td><td class="info">Revolving</td></tr>
+    <tr><td class="label">Account Type - Detail:</td><td class="info">Credit Card</td><td class="info">Credit Card</td><td class="info">Credit Card</td></tr>
+    <tr><td class="label">Bureau Code:</td><td class="info">Individual</td><td class="info">Individual</td><td class="info">Individual</td></tr>
+    <tr><td class="label">Account Status:</td><td class="info">Open</td><td class="info">Open</td><td class="info">Open</td></tr>
+    <tr><td class="label">Monthly Payment:</td><td class="info">$35</td><td class="info">$35</td><td class="info">$35</td></tr>
+    <tr><td class="label">Date Opened:</td><td class="info">04/12/2019</td><td class="info">04/12/2019</td><td class="info">04/01/2019</td></tr>
+    <tr><td class="label">Balance:</td><td class="info">$1,250</td><td class="info">$1,250</td><td class="info">$1,250</td></tr>
+    <tr><td class="label">No. of Months (terms):</td><td class="info">-</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">High Credit:</td><td class="info">$1,480</td><td class="info">$1,480</td><td class="info">$1,480</td></tr>
+    <tr><td class="label">Credit Limit:</td><td class="info">$1,500</td><td class="info">$1,500</td><td class="info">$1,000</td></tr>
+    <tr><td class="label">Past Due:</td><td class="info">$0</td><td class="info">$0</td><td class="info">$0</td></tr>
+    <tr><td class="label">Payment Status:</td><td class="info">Current</td><td class="info">Current</td><td class="info">Current</td></tr>
+    <tr><td class="label">Last Reported:</td><td class="info">09/01/2026</td><td class="info">09/03/2026</td><td class="info">08/28/2026</td></tr>
+    <tr><td class="label">Comments:</td><td class="info">-</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Date Last Active:</td><td class="info">08/20/2026</td><td class="info">08/20/2026</td><td class="info">08/20/2026</td></tr>
+    <tr><td class="label">Date of Last Payment:</td><td class="info">08/20/2026</td><td class="info">08/20/2026</td><td class="info">08/20/2026</td></tr>
+  </table>
+  <div class="hstry-header">Two-Year payment history</div>
+  <table class="addr_hsrty">
+    <tr><td class="label">Month</td><td>Jan</td><td>Feb</td><td>Mar</td><td>Apr</td><td>May</td></tr>
+    <tr><td class="label">Year</td><td>'26</td><td>'26</td><td>'26</td><td>'26</td><td>'26</td></tr>
+    <tr><td class="label">TransUnion</td><td>OK</td><td>OK</td><td>OK</td><td>OK</td><td>OK</td></tr>
+    <tr><td class="label">Experian</td><td>OK</td><td>OK</td><td>30</td><td>OK</td><td>OK</td></tr>
+    <tr><td class="label">Equifax</td><td>OK</td><td>OK</td><td>OK</td><td>OK</td><td></td></tr>
+  </table>
+
+  <!-- 2. Collection on TU + EQ only, balances and open dates disagree -->
+  <div class="sub_header">MIDLAND CREDIT MANAGEMENT</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Account #:</td><td class="info">8834****</td><td class="info">-</td><td class="info">8834****</td></tr>
+    <tr><td class="label">Account Type:</td><td class="info">Open account</td><td class="info">-</td><td class="info">Open account</td></tr>
+    <tr><td class="label">Account Type - Detail:</td><td class="info">Collection</td><td class="info">-</td><td class="info">Collection</td></tr>
+    <tr><td class="label">Account Status:</td><td class="info">Derogatory</td><td class="info">-</td><td class="info">Derogatory</td></tr>
+    <tr><td class="label">Date Opened:</td><td class="info">01/15/2021</td><td class="info">-</td><td class="info">06/02/2021</td></tr>
+    <tr><td class="label">Balance:</td><td class="info">$842</td><td class="info">-</td><td class="info">$910</td></tr>
+    <tr><td class="label">Past Due:</td><td class="info">$842</td><td class="info">-</td><td class="info">$842</td></tr>
+    <tr><td class="label">Payment Status:</td><td class="info">Collection/Chargeoff</td><td class="info">-</td><td class="info">Collection</td></tr>
+    <tr><td class="label">Comments:</td><td class="info">Placed for collection</td><td class="info">-</td><td class="info">Placed for collection</td></tr>
+    <tr><td class="label">Date Last Active:</td><td class="info">11/2020</td><td class="info">-</td><td class="info">11/2020</td></tr>
+  </table>
+
+  <!-- 3. Charge-off: past due differs, last active > 7.5 years ago -->
+  <div class="sub_header">SYNCB/AMAZON</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Account #:</td><td class="info">604578****9876</td><td class="info">604578****9876</td><td class="info">604578****9876</td></tr>
+    <tr><td class="label">Account Type:</td><td class="info">Revolving</td><td class="info">Revolving</td><td class="info">Revolving</td></tr>
+    <tr><td class="label">Account Type - Detail:</td><td class="info">Charge Account</td><td class="info">Charge Account</td><td class="info">Charge Account</td></tr>
+    <tr><td class="label">Account Status:</td><td class="info">Closed</td><td class="info">Closed</td><td class="info">Closed</td></tr>
+    <tr><td class="label">Date Opened:</td><td class="info">06/10/2016</td><td class="info">06/10/2016</td><td class="info">06/10/2016</td></tr>
+    <tr><td class="label">Balance:</td><td class="info">$1,100</td><td class="info">$1,100</td><td class="info">$1,100</td></tr>
+    <tr><td class="label">Past Due:</td><td class="info">$1,100</td><td class="info">$1,100</td><td class="info">$0</td></tr>
+    <tr><td class="label">Payment Status:</td><td class="info">Collection/Chargeoff</td><td class="info">Collection/Chargeoff</td><td class="info">Collection/Chargeoff</td></tr>
+    <tr><td class="label">Date Last Active:</td><td class="info">01/05/2018</td><td class="info">01/05/2018</td><td class="info">01/05/2018</td></tr>
+    <tr><td class="label">Date of Last Payment:</td><td class="info">12/20/2017</td><td class="info">12/20/2017</td><td class="info">12/20/2017</td></tr>
+  </table>
+
+  <!-- 4. Clean auto loan: consistent everywhere, must produce no leads -->
+  <div class="sub_header">TOYOTA MOTOR CREDIT CO</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Account #:</td><td class="info">7012****5555</td><td class="info">7012****5555</td><td class="info">7012****5555</td></tr>
+    <tr><td class="label">Account Type:</td><td class="info">Installment</td><td class="info">Installment</td><td class="info">Installment</td></tr>
+    <tr><td class="label">Account Type - Detail:</td><td class="info">Auto Loan</td><td class="info">Auto Loan</td><td class="info">Auto Loan</td></tr>
+    <tr><td class="label">Account Status:</td><td class="info">Open</td><td class="info">Open</td><td class="info">Open</td></tr>
+    <tr><td class="label">Monthly Payment:</td><td class="info">$389</td><td class="info">$389</td><td class="info">$389</td></tr>
+    <tr><td class="label">Date Opened:</td><td class="info">05/10/2025</td><td class="info">05/10/2025</td><td class="info">05/10/2025</td></tr>
+    <tr><td class="label">Balance:</td><td class="info">$14,200</td><td class="info">$14,200</td><td class="info">$14,200</td></tr>
+    <tr><td class="label">No. of Months (terms):</td><td class="info">60</td><td class="info">60</td><td class="info">60</td></tr>
+    <tr><td class="label">Past Due:</td><td class="info">$0</td><td class="info">$0</td><td class="info">$0</td></tr>
+    <tr><td class="label">Payment Status:</td><td class="info">Current</td><td class="info">Current</td><td class="info">Current</td></tr>
+  </table>
+
+  <!-- 5. Second Capital One account, TU only, positive -->
+  <div class="sub_header">CAPITAL ONE</div>
+  <table class="rpt_content_table rpt_content_header rpt_table4column">
+    <tr><th></th><th>TransUnion</th><th>Experian</th><th>Equifax</th></tr>
+    <tr><td class="label">Account #:</td><td class="info">414709******7777</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Account Type:</td><td class="info">Revolving</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Account Status:</td><td class="info">Closed</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Date Opened:</td><td class="info">02/2015</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Balance:</td><td class="info">$0</td><td class="info">-</td><td class="info">-</td></tr>
+    <tr><td class="label">Payment Status:</td><td class="info">Paid as agreed</td><td class="info">-</td><td class="info">-</td></tr>
+  </table>
+
+  <div class="rpt_fullReport_header">Inquiries</div>
+  <table class="rpt_content_table rpt_content_header rpt_content_contacts">
+    <tr><th>Creditor Name</th><th>Type of Business</th><th>Date of inquiry</th><th>Credit Bureau</th></tr>
+    <tr><td>TOYOTA MOTOR CREDIT</td><td>Auto Financing</td><td>05/02/2025</td><td>Experian</td></tr>
+    <tr><td>CREDIT ONE BANK</td><td>Banks</td><td>02/11/2026</td><td>TransUnion</td></tr>
+    <tr><td>OLD FINANCE CO</td><td>-</td><td>03/01/2024</td><td>Equifax</td></tr>
+  </table>
+
+  <div class="rpt_fullReport_header">Public Information</div>
+  <p>None Reported</p>
+
+  <div class="rpt_fullReport_header">Creditor Contacts</div>
+  <table class="rpt_content_table rpt_content_header rpt_content_contacts">
+    <tr><th>Creditor Name</th><th>Address</th><th>Phone Number</th></tr>
+    <tr><td>CAPITAL ONE</td><td>PO BOX 30285 SALT LAKE CITY, UT 84130</td><td>(800) 955-7070</td></tr>
+  </table>
+</div>
+</body>
+</html>
