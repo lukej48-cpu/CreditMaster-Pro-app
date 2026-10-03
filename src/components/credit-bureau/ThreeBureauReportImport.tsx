@@ -7,6 +7,7 @@
  */
 
 import { useRef, useState } from "react";
+import { authFetch } from "@/lib/firm/client-fetch";
 import type { Bureau } from "@/types/credit-bureau";
 import type { Discrepancy } from "@/lib/credit-report-import/types";
 import type { ImportSummary } from "@/lib/credit-report-import/persistence";
@@ -48,7 +49,7 @@ export default function ThreeBureauReportImport({ onImportComplete, onError }: P
     try {
       const form = new FormData();
       form.append("file", file);
-      const res = await fetch("/api/credit-bureau/import", { method: "POST", body: form });
+      const res = await authFetch("/api/credit-bureau/import", { method: "POST", body: form });
       const body = await res.json().catch(() => ({}));
       if (!res.ok || !body.success) throw new Error(body.error || "Import failed");
       setResult({
