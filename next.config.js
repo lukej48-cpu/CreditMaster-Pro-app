@@ -1,3 +1,5 @@
+// Vercel's Supabase integration names the public key NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY; the app reads NEXT_PUBLIC_SUPABASE_ANON_KEY.
+if (!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY && process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
 /** @type {import('next').NextConfig} */
 
 const isDev = process.env.NODE_ENV !== "production";
