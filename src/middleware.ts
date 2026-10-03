@@ -224,13 +224,16 @@ export async function middleware(request: NextRequest) {
   }
 
   try {
-    // Check for auth token in cookies
-    const token =
-      request.cookies.get("sb-access-token")?.value ||
-      request.cookies.get("supabase-auth-token")?.value;
+    // Verify the session with Supabase. @supabase/ssr stores it in
+    // `sb-<project-ref>-auth-token` cookies (possibly chunked), so checking
+    // for a fixed cookie name never matched and bounced every signed-in user
+    // back to the login page. getUser() validates the token server-side.
+    const supabase = createEdgeSupabaseClient(request);
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    // If no token, redirect to login
-    if (!token) {
+    if (!user) {
       const loginUrl = new URL("/auth/login", request.url);
       loginUrl.searchParams.set("redirect", pathname);
       return NextResponse.redirect(loginUrl);
@@ -243,16 +246,6 @@ export async function middleware(request: NextRequest) {
     // Edge-safe @supabase/ssr cookie client) is the only source of truth.
     if (adminRoutes.some((route) => pathname.startsWith(route))) {
       try {
-        const supabase = createEdgeSupabaseClient(request);
-
-        const {
-          data: { user },
-        } = await supabase.auth.getUser();
-
-        if (!user) {
-          return NextResponse.redirect(new URL("/auth/login", request.url));
-        }
-
         const { data: profile } = await supabase
           .from("profiles")
           .select("role")
