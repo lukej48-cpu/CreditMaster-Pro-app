@@ -8,6 +8,7 @@
  */
 
 import Link from "next/link";
+import { authFetch } from "@/lib/firm/client-fetch";
 import { useParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
@@ -87,7 +88,7 @@ export default function ClientFilePage() {
   const fileRef = useRef<HTMLInputElement>(null);
 
   const load = useCallback(async () => {
-    const res = await fetch(`/api/firm/clients/${id}`);
+    const res = await authFetch(`/api/firm/clients/${id}`);
     const body = await res.json().catch(() => ({}));
     if (!res.ok) return setError(body.error || body.message || "Could not load client.");
     setClient(body.client);
@@ -105,7 +106,7 @@ export default function ClientFilePage() {
     setError(null);
     const form = new FormData();
     form.append("file", file);
-    const res = await fetch(`/api/firm/clients/${id}/report${replace ? "?replace=1" : ""}`, { method: "POST", body: form });
+    const res = await authFetch(`/api/firm/clients/${id}/report${replace ? "?replace=1" : ""}`, { method: "POST", body: form });
     const body = await res.json().catch(() => ({}));
     setBusy(null);
     if (fileRef.current) fileRef.current.value = "";
@@ -119,7 +120,7 @@ export default function ClientFilePage() {
     if (!view?.nextRound) return;
     setBusy("generate");
     setError(null);
-    const res = await fetch(`/api/firm/clients/${id}/package`, {
+    const res = await authFetch(`/api/firm/clients/${id}/package`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ round: view.nextRound, confirmedLeadIds: [...confirmed], mailDate }),
@@ -147,7 +148,7 @@ export default function ClientFilePage() {
   async function saveResults() {
     setBusy("results");
     setError(null);
-    const res = await fetch(`/api/firm/clients/${id}/outcomes`, {
+    const res = await authFetch(`/api/firm/clients/${id}/outcomes`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ results, responseDate: responseDate || undefined }),
